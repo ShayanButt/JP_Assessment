@@ -56,9 +56,7 @@
   position: relative;
 }
 
-/* Asset Class Row Colors (Backgrounds) */
-/* Requirements: Macro=White, Equities=Blue, Credit=Green */
-/* Using modern pastel variants for aesthetics */
+
 
 .row-macro {
   background-color: #ffffff;
@@ -72,12 +70,12 @@
   background-color: #c0e2bc; /* light green-50 */
 }
 
-/* Text Colors for Asset Class consistency */
+
 .row-macro td { color: #334155; }
 .row-equities td { color: #1e3a8a; } /* dark blue */
 .row-credit td { color: #14532d; } /* dark green */
 
-/* Price Column Styling */
+
 .price-cell {
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
@@ -92,7 +90,6 @@
   color: #dc2626 !important; /* Red-600 */
 }
 
-/* Asset Badges - Optional aesthetic touch */
 .asset-badge {
   display: inline-block;
   padding: 4px 8px;

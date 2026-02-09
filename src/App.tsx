@@ -3,8 +3,6 @@ import { useEffect, useState, useMemo, lazy, Suspense } from 'react';
 import type { Instrument } from './types';
 import sampleData from './sampleData.json';
 
-// 1. Lazy Loading the component
-// This moves FinancialTable into its own JS chunk, loaded only when needed.
 const FinancialTable = lazy(() => import('./components/FinancialTable'));
 
 function App() {
@@ -25,9 +23,6 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  // 2. Memoization of Data
-  // If this App component re-renders for other reasons (like a theme toggle),
-  // useMemo ensures we don't treat 'data' as a "new" object unless it actually is.
   const memoizedData = useMemo(() => data, [data]);
 
 
@@ -38,8 +33,7 @@ function App() {
         <h1>Financial Instruments</h1>
       </header>
       <main>
-        {/* 3. Suspense Boundary */}
-        {/* Required when using React.lazy to show a loader while the chunk downloads */}
+
         <Suspense fallback={<p>Loading Table...</p>}>
           <FinancialTable data={memoizedData} />
         </Suspense>

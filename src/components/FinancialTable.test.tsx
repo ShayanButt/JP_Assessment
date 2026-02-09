@@ -25,7 +25,7 @@ describe('FinancialTable', () => {
 
   it('applies correct class for Asset Class', () => {
     render(<FinancialTable data={mockData} />);
-    
+
     const creditRow = screen.getByText('ALPHA').closest('tr');
     expect(creditRow).toHaveClass('row-credit');
 
@@ -38,7 +38,7 @@ describe('FinancialTable', () => {
 
   it('applies correct class for Price (Positive/Negative)', () => {
     render(<FinancialTable data={mockData} />);
-    
+
     // 3150.67 -> Positive
     const positivePrice = screen.getByText('3150.67');
     expect(positivePrice).toHaveClass('price-positive');
@@ -50,16 +50,15 @@ describe('FinancialTable', () => {
 
   it('triggers sort when header is clicked', () => {
     render(<FinancialTable data={mockData} />);
-    
+
     const tickerHeader = screen.getByText(/Ticker/);
     fireEvent.click(tickerHeader);
 
-    // After sort, ALPHA should be first (default mock order is already sorted by chance for ticker, let's check indicator)
+
     expect(screen.getByText(/Ticker ↑/)).toBeInTheDocument();
   });
 
   it('renders pagination controls', () => {
-    // Create enough data for 2 pages (15 items > 10 itemsPerPage)
     const largeData = Array.from({ length: 15 }, (_, i) => ({
       ticker: `TICKER${i}`,
       price: 100 + i,
@@ -67,7 +66,7 @@ describe('FinancialTable', () => {
     }));
 
     render(<FinancialTable data={largeData} />);
-    
+
     expect(screen.getByText('Page 1 of 2')).toBeInTheDocument();
   });
 });
